@@ -8,7 +8,7 @@ class AuthController extends GetxController{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
   var isCheckingLogin = true.obs;
-  var isSignedIn = false.obs;
+   var isSignedIn = false.obs;
   var user = Rxn<User>();
 
 
