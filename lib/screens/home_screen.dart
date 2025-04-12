@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_auth/screens/user_info.dart';
 import '../controller/auth_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -32,7 +33,9 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => UserInfo()));
+      },child: Icon(Icons.add),),
     );
   }
 }

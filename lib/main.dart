@@ -4,13 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_auth/screens/home_screen.dart';
 import 'package:google_auth/screens/login_screen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'biometric_helper.dart';
 import 'controller/auth_controller.dart';
 
+const supabaseUrl = 'https://eywxgptqmdentwlcsqaa.supabase.co';
+const supabaseKey =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5d3hncHRxbWRlbnR3bGNzcWFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQxMDI3MDQsImV4cCI6MjA1OTY3ODcwNH0.2wVETt92MwbDqg1enN3Zl2vpyATnXvVfmNuWexV_sDo';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Supabase.initialize(url: supabaseUrl, anonKey: supabaseKey);
   Get.put(AuthController());
   runApp( MyApp());
 }
