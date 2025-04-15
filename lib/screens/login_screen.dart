@@ -20,11 +20,8 @@ class LoginScreen extends StatelessWidget {
             bool isAuthenticated = await BiometricHelper.authenticate();
             if(isAuthenticated){
                 // Proceed to the next screen or perform desired action
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  HomeScreen()),
-                );
-              } else {
+              Get.to(HomeScreen());
+            } else {
                 // Show an error message
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Authentication failed')),

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,12 +11,17 @@ class AuthController extends GetxController{
   var isCheckingLogin = true.obs;
    var isSignedIn = false.obs;
   var user = Rxn<User>();
-
+  var isDarkMode = false.obs;
 
   @override
   void onInit() {
     _checkLoginStatus();
     super.onInit();
+  }
+
+  void toggleThemeMode(){
+    isDarkMode.value = !isDarkMode.value;
+    Get.changeThemeMode(isDarkMode.value?ThemeMode.dark:ThemeMode.light);
   }
 
   void _checkLoginStatus() async {

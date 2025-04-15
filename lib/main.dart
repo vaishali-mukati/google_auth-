@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
         );
       }
 
-      return MaterialApp(
+      return GetMaterialApp(
+        theme: ThemeData.light(),
+        darkTheme: ThemeData.dark(),
         home: controller.isSignedIn.value
             ? HomeScreen()
             : FutureBuilder(

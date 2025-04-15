@@ -12,7 +12,17 @@ class HomeScreen extends StatelessWidget {
     final user = controller.user.value;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Welcome")),
+      appBar: AppBar(title:Row(
+        children: [
+          Text('Home Page'),
+          SizedBox(width:12,),
+          Obx(
+              () => IconButton(onPressed: (){
+              controller.toggleThemeMode();
+            }, icon:Icon(controller.isDarkMode.value?Icons.dark_mode : Icons.light_mode )),
+          ),
+        ],
+      )),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +36,11 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 12,),
             ElevatedButton(
               onPressed: () {
-                controller.signOut();
+                Get.to(()=> controller.signOut(),
+                transition: Transition.zoom,
+                  duration: Duration(seconds: 1),
+                  curve: Curves.decelerate,
+                );
               },
               child: Text("Logout"),
             ),
@@ -34,7 +48,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => UserInfo()));
+        Get.to(UserInfo());
       },child: Icon(Icons.add),),
     );
   }
