@@ -19,7 +19,9 @@ class HomeScreen extends StatelessWidget {
           title:Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Home Page'),
+          Text('Home Page',style: TextStyle(
+            color: Colors.white
+          ),),
           SizedBox(width:12,),
           Obx(
               () =>  Switch(
@@ -41,6 +43,9 @@ class HomeScreen extends StatelessWidget {
             Text('Email: ${user?.email ?? ''}'),
             SizedBox(height: 12,),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple
+              ),
               onPressed: () {
                 Get.to(()=> LoginScreen(),
                 transition: Transition.zoom,
@@ -48,14 +53,18 @@ class HomeScreen extends StatelessWidget {
                   curve: Curves.decelerate,
                 );
               },
-              child: Text("Logout"),
+              child: Text("Logout",style: TextStyle(
+                color: Colors.white
+              ),),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepPurple,
+        onPressed: (){
         Get.to(UserInfo());
-      },child: Icon(Icons.add,color: controller.isDarkMode.value ? Colors.white :Colors.deepPurple,),),
+      },child: Icon(Icons.add,color:Colors.white,),),
     );
   }
 }
