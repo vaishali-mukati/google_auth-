@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_auth/screens/user_info.dart';
 import '../controller/auth_controller.dart';
+import 'login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final controller = Get.find<AuthController>();
@@ -12,7 +13,9 @@ class HomeScreen extends StatelessWidget {
     final user = controller.user.value;
 
     return Scaffold(
-      appBar: AppBar(title:Row(
+      appBar: AppBar(
+          backgroundColor:Colors.deepPurple,
+          title:Row(
         children: [
           Text('Home Page'),
           SizedBox(width:12,),
@@ -36,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 12,),
             ElevatedButton(
               onPressed: () {
-                Get.to(()=> controller.signOut(),
+                Get.to(()=> LoginScreen(),
                 transition: Transition.zoom,
                   duration: Duration(seconds: 1),
                   curve: Curves.decelerate,
@@ -49,7 +52,7 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){
         Get.to(UserInfo());
-      },child: Icon(Icons.add),),
+      },child: Icon(Icons.add,color: Colors.deepPurple,),),
     );
   }
 }

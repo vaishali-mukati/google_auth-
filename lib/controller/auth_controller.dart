@@ -55,9 +55,14 @@ class AuthController extends GetxController{
   }
 
   Future<void> signOut() async {
-    await _auth.signOut();
-    await _googleSignIn.signOut();
-    await _secureStorage.delete(key: 'uid');
-    isSignedIn.value = false;
+    try{
+      await _auth.signOut();
+      await _googleSignIn.signOut();
+      await _secureStorage.delete(key: 'uid');
+      isSignedIn.value = false;
+    }
+    catch(e){
+      print('--------log out error----$e');
+    }
   }
 }
