@@ -63,6 +63,7 @@ class _UserInfoState extends State<UserInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: IconButton(onPressed: (){
           Navigator.pushAndRemoveUntil(
             context,

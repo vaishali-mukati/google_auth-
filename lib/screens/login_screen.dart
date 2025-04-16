@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_auth/biometric_helper.dart';
-import 'package:google_auth/screens/home_screen.dart';
 
 import '../controller/auth_controller.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final controller = Get.find<AuthController>();

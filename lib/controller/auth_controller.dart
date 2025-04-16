@@ -12,12 +12,15 @@ class AuthController extends GetxController{
    var isSignedIn = false.obs;
   var user = Rxn<User>();
   var isDarkMode = false.obs;
-
+  var currentIndex= 0.obs;
   @override
   void onInit() {
     _checkLoginStatus();
     super.onInit();
   }
+ void bottemnavBar(int index){
+    currentIndex.value = index;
+ }
 
   void toggleThemeMode(){
     isDarkMode.value = !isDarkMode.value;
