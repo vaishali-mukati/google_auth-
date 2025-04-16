@@ -10,11 +10,20 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
+          title: Text("Login",style: TextStyle(
+            color: Colors.white
+          ),)),
       body: Center(
         child: ElevatedButton.icon(
-          icon: Icon(Icons.login),
-          label: Text("Sign in with Google"),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple
+          ),
+          icon: Icon(Icons.login,color: Colors.white,),
+          label: Text("Sign in with Google",style: TextStyle(
+            color: Colors.white
+          ),),
           onPressed: () async {
             controller.signInWithGoogle();
             bool isAuthenticated = await BiometricHelper.authenticate();
