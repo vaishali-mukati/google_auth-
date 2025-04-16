@@ -14,15 +14,18 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
           backgroundColor:Colors.deepPurple,
           title:Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text('Home Page'),
           SizedBox(width:12,),
           Obx(
-              () => IconButton(onPressed: (){
-              controller.toggleThemeMode();
-            }, icon:Icon(controller.isDarkMode.value?Icons.dark_mode : Icons.light_mode )),
+              () =>  Switch(
+                value: controller.isDarkMode.value,
+                onChanged: (val) => controller.toggleThemeMode(),
+              )
           ),
         ],
       )),
@@ -52,7 +55,7 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){
         Get.to(UserInfo());
-      },child: Icon(Icons.add,color: Colors.deepPurple,),),
+      },child: Icon(Icons.add,color: controller.isDarkMode.value ? Colors.white :Colors.deepPurple,),),
     );
   }
 }
