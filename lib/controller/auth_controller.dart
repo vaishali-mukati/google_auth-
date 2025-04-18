@@ -13,15 +13,22 @@ class AuthController extends GetxController{
   var user = Rxn<User>();
   var isDarkMode = false.obs;
   var currentIndex= 0.obs;
+  var isSelectedLanguage = 'English'.obs;
   @override
   void onInit() {
     _checkLoginStatus();
     super.onInit();
   }
+
  void bottemnavBar(int index){
     currentIndex.value = index;
  }
 
+ void changeLocalization(String landCode,String countryCode, String lang){
+    var locale = Locale(landCode,countryCode);
+    isSelectedLanguage.value = lang;
+    Get.updateLocale(locale);
+ }
   void toggleThemeMode(){
     isDarkMode.value = !isDarkMode.value;
     Get.changeThemeMode(isDarkMode.value?ThemeMode.dark:ThemeMode.light);

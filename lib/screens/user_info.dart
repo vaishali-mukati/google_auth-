@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'home_screen.dart';
@@ -46,7 +47,7 @@ class _UserInfoState extends State<UserInfo> {
       final String fileName = "${DateTime.now().millisecondsSinceEpoch}.jpg";
       final upload =  await supabase.storage.from('userimage').updateBinary(fileName,fileByte);
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Successfully uploaded image',style: TextStyle(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Successfully uploaded image'.tr,style: TextStyle(
           fontSize: 21,color: Colors.white,
       ),)));
       print('Picked image: $pickedFile');
@@ -100,7 +101,7 @@ class _UserInfoState extends State<UserInfo> {
                   padding: const EdgeInsets.only(left: 14, right: 14),
                   child: TextFormField(
                     controller: _name,
-                    decoration: InputDecoration(labelText: 'Full Name'),
+                    decoration: InputDecoration(labelText: 'Full Name'.tr),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -109,7 +110,7 @@ class _UserInfoState extends State<UserInfo> {
                   child: TextFormField(
                     controller: _email,
                     decoration: InputDecoration(
-                      labelText: 'Email',
+                      labelText: 'Email'.tr,
                     ),
                   ),
                 ),
@@ -124,14 +125,14 @@ class _UserInfoState extends State<UserInfo> {
                         email = _email.text;
                       });
                       await addUserData();
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Summited User Info',style: TextStyle(
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Summited User Info'.tr,style: TextStyle(
                         fontSize: 21,color: Colors.white,
                       ),)));
                     }
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurple.shade100),
-                  child: Text('Submit Info'),
+                  child: Text('Submit Info'.tr),
                 ),
               ],
             ),

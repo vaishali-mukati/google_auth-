@@ -2,12 +2,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_auth/localization/translation.dart';
 import 'package:google_auth/screens/bottomNavbar.dart';
 import 'package:google_auth/screens/home_screen.dart';
 import 'package:google_auth/screens/login_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'biometric_helper.dart';
+import 'biometric_auth/biometric_helper.dart';
 import 'controller/auth_controller.dart';
 
 const supabaseUrl = 'https://eywxgptqmdentwlcsqaa.supabase.co';
@@ -36,6 +37,9 @@ class MyApp extends StatelessWidget {
       }
 
       return GetMaterialApp(
+        locale: Locale('en','US'),
+        fallbackLocale: Locale('en','US'),
+        translations: TranslationStrings(),
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
         home: controller.isSignedIn.value

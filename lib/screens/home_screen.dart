@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'localization_screen.dart';
 import 'login_screen.dart';
 import 'package:get/get.dart';
 import '../controller/auth_controller.dart';
@@ -18,7 +19,7 @@ class HomeScreen extends StatelessWidget {
           title:Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Home Page',style: TextStyle(
+              Text('Home Page'.tr,style: TextStyle(
                   color: Colors.white
               ),),
               SizedBox(width:12,),
@@ -28,6 +29,9 @@ class HomeScreen extends StatelessWidget {
                     onChanged: (val) => controller.toggleThemeMode(),
                   )
               ),
+              IconButton(onPressed: (){
+                Get.to(LocalizationScreen());
+              }, icon: Icon(Icons.language_outlined)),
             ],
           )),
       body: Center(
@@ -37,9 +41,9 @@ class HomeScreen extends StatelessWidget {
             if (user?.photoURL != null)
               CircleAvatar(backgroundImage: NetworkImage(user!.photoURL!), radius: 40),
             SizedBox(height: 12,),
-            Text('Name: ${user?.displayName ?? ''}'),
+            Text('Name: ${user?.displayName ?? ''}'.tr),
             SizedBox(height: 12,),
-            Text('Email: ${user?.email ?? ''}'),
+            Text('Email: ${user?.email ?? ''}'.tr),
             SizedBox(height: 12,),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -52,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                   curve: Curves.decelerate,
                 );
               },
-              child: Text("Logout",style: TextStyle(
+              child: Text("Logout".tr,style: TextStyle(
                   color: Colors.white
               ),),
             ),
